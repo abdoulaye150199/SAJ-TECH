@@ -1,0 +1,104 @@
+{
+  "brand": {
+    "name": "SAJ TECH",
+    "tagline": "Studio digital indépendant",
+    "locations": ["Montréal, Canada", "Dakar, Sénégal"]
+  },
+  "navigation": [
+    { "label": "Accueil", "target": "home" },
+    { "label": "Services", "target": "services" },
+    { "label": "Équipe", "target": "team" },
+    { "label": "Avis", "target": "reviews" },
+    { "label": "Contact", "target": "contact" }
+  ],
+  "services": [
+    {
+      "index": "01",
+      "icon": "code",
+      "title": "Développement web & mobile",
+      "description": "Des plateformes rapides, robustes et pensées pour convertir, du prototype au produit final.",
+      "tags": ["Angular", "Mobile", "API"]
+    },
+    {
+      "index": "02",
+      "icon": "layers",
+      "title": "Design UI/UX",
+      "description": "Des interfaces claires et mémorables qui transforment chaque parcours en expérience fluide.",
+      "tags": ["UX Research", "UI Design", "Prototype"]
+    },
+    {
+      "index": "03",
+      "icon": "pen",
+      "title": "Design graphique",
+      "description": "Identités visuelles, supports de communication et créations qui rendent votre marque unique.",
+      "tags": ["Branding", "Print", "Digital"]
+    },
+    {
+      "index": "04",
+      "icon": "server",
+      "title": "Maintenance informatique",
+      "description": "Installation, assistance et maintenance pour garder vos outils performants et disponibles.",
+      "tags": ["Support", "Sécurité", "Réseau"]
+    },
+    {
+      "index": "05",
+      "icon": "play",
+      "title": "Édition vidéo",
+      "description": "Des contenus audiovisuels rythmés et professionnels pour capter l’attention de votre audience.",
+      "tags": ["Montage", "Motion", "Storytelling"]
+    },
+    {
+      "index": "06",
+      "icon": "share",
+      "title": "Réseaux sociaux",
+      "description": "Une stratégie éditoriale cohérente pour construire votre communauté et amplifier votre impact.",
+      "tags": ["Stratégie", "Contenu", "Analytics"]
+    }
+  ],
+  "team": [
+    {
+      "index": "01",
+      "name": "Abdoulaye Diallo",
+      "role": "Développeur Full Stack / Designer UI/UX",
+      "position": "Co-fondateur",
+      "photo": "/assets/team/Abdoulaye.png"
+    },
+    {
+      "index": "02",
+      "name": "Marie Jeanne Young",
+      "role": "Spécialiste UX / Développeuse",
+      "position": "Co-fondatrice",
+      "photo": "/assets/team/Jeanne.png"
+    },
+    {
+      "index": "03",
+      "name": "El Souleymane Bocoum",
+      "role": "Technicien informatique / Programmeur",
+      "position": "Co-fondateur",
+      "photo": "/assets/team/Bocoum.png"
+    }
+  ],
+  "testimonials": [
+    {
+      "client": "BBC",
+      "company": "Bocoum Business Company",
+      "service": "Design graphique",
+      "location": "Dakar",
+      "quote": "Le résultat a été au-delà de nos attentes. L’équipe a saisi notre vision et l’a transformée en un design créatif et efficace."
+    },
+    {
+      "client": "S",
+      "company": "Senecop",
+      "service": "Design graphique & UI/UX",
+      "location": "Sénégal",
+      "quote": "Un design à la fois esthétique et intuitif. Une équipe professionnelle, à l’écoute et respectueuse des délais."
+    }
+  ],
+  "contact": {
+    "email": "sajtech123@gmail.com",
+    "phones": [
+      { "label": "+1 (514) 298-7202", "href": "+15142987202" },
+      { "label": "+221 76 271 36 46", "href": "+221762713646" }
+    ]
+  }
+}

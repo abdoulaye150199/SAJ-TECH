@@ -1,0 +1,154 @@
+<div class="intro-curtain" aria-hidden="true"><img src="/assets/Saj.png" alt="" /></div>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<header class="nav" [class.scrolled]="scrolled()">
+  <button class="nav-brand" type="button" (click)="scrollTo('home')" aria-label="Accueil SAJ Tech">
+    <img src="/assets/Saj.png" alt="" />
+    <span>SAJ TECH</span>
+  </button>
+  <nav class="nav-links" aria-label="Navigation principale">
+    <button (click)="scrollTo('services')">Services</button>
+    <button (click)="scrollTo('team')">Équipe</button>
+    <button (click)="scrollTo('reviews')">Avis</button>
+  </nav>
+  <button class="nav-cta" (click)="scrollTo('contact')">Démarrer un projet <span>↗</span></button>
+  <button class="menu-trigger" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen()" aria-label="Ouvrir le menu">
+    <i></i><i></i>
+  </button>
+</header>
+
+<aside class="menu-panel" [class.open]="menuOpen()">
+  <div class="menu-panel-top"><span>Navigation</span><button (click)="toggleMenu()">Fermer ×</button></div>
+  <nav>
+    @for (item of [['home','Accueil'], ['services','Services'], ['team','Équipe'], ['reviews','Avis'], ['contact','Contact']]; track item[0]; let i = $index) {
+      <button (click)="scrollTo(item[0])"><small>0{{i + 1}}</small><strong>{{item[1]}}</strong><span>↗</span></button>
+    }
+  </nav>
+</aside>
+
+<main>
+  <section class="hero" id="home">
+    <p class="hero-index">Studio digital indépendant · Montréal — Dakar</p>
+    <div class="hero-stage">
+      <app-particle-logo />
+    </div>
+    <button class="hero-action" (click)="scrollTo('services')"><span>Explorer le studio</span><b>↓</b></button>
+    <p class="hero-side">Stratégie · Design · Technologie</p>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div>
+      <span>NOUS CRÉONS DES EXPÉRIENCES DIGITALES</span><i>✦</i>
+      <span>NOUS CRÉONS DES EXPÉRIENCES DIGITALES</span><i>✦</i>
+      <span>NOUS CRÉONS DES EXPÉRIENCES DIGITALES</span><i>✦</i>
+    </div>
+  </div>
+
+  <section class="statement" appReveal>
+    <div class="section-kicker"><span>01</span><p>Notre approche</p></div>
+    <div class="statement-copy">
+      <h1>LE DIGITAL NE DOIT PAS<br />SEULEMENT ÊTRE VU.<br /><em>IL DOIT ÊTRE VÉCU.</em></h1>
+      <div>
+        <p>SAJ Tech réunit design, développement et stratégie pour créer des expériences utiles, singulières et mémorables.</p>
+        <button class="arrow-link" (click)="scrollTo('services')">Notre savoir-faire <span>↗</span></button>
+      </div>
+    </div>
+    <div class="stats">
+      <article><strong>06</strong><span>expertises réunies</span></article>
+      <article><strong>360°</strong><span>de l’idée au lancement</span></article>
+      <article><strong>02</strong><span>continents, une équipe</span></article>
+    </div>
+  </section>
+
+  <section class="work" id="services" appReveal>
+    <header class="work-head">
+      <div class="section-kicker"><span>02</span><p>Nos expertises</p></div>
+      <h2>TOUT CE QU’IL FAUT<br />POUR <em>ÉMERGER.</em></h2>
+    </header>
+    <div class="services-list">
+      @for (service of services; track service.index) {
+        <article class="service-row reveal-child" appTilt>
+          <span class="service-index">{{service.index}}</span>
+          <div class="service-symbol">
+            @switch (service.icon) {
+              @case ('code') { <svg viewBox="0 0 48 48"><path d="m17 13-11 11 11 11M31 13l11 11-11 11M28 7l-8 34"/></svg> }
+              @case ('layers') { <svg viewBox="0 0 48 48"><path d="m24 5 19 10-19 10L5 15 24 5Zm-17 19 17 10 17-10M7 33l17 10 17-10"/></svg> }
+              @case ('pen') { <svg viewBox="0 0 48 48"><path d="m30 7 11 11-22 22-13 2 2-13L30 7Zm-18 19 11 11M27 10l11 11"/></svg> }
+              @case ('server') { <svg viewBox="0 0 48 48"><rect x="5" y="6" width="38" height="14" rx="3"/><rect x="5" y="28" width="38" height="14" rx="3"/><path d="M12 13h1M12 35h1M20 13h16M20 35h16"/></svg> }
+              @case ('play') { <svg viewBox="0 0 48 48"><rect x="5" y="9" width="38" height="30" rx="4"/><path d="m20 17 12 7-12 7V17Z"/></svg> }
+              @default { <svg viewBox="0 0 48 48"><circle cx="13" cy="24" r="5"/><circle cx="35" cy="11" r="5"/><circle cx="35" cy="37" r="5"/><path d="m17 21 13-7M17 27l13 7"/></svg> }
+            }
+          </div>
+          <div class="service-main"><h3>{{service.title}}</h3><p>{{service.description}}</p></div>
+          <div class="service-tags">@for (tag of service.tags; track tag) { <span>{{tag}}</span> }</div>
+          <b class="service-arrow">↗</b>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="team" id="team" appReveal>
+    <header class="team-head">
+      <div class="section-kicker"><span>03</span><p>Le collectif</p></div>
+      <h2>3 REGARDS.<br /><em>UNE VISION.</em></h2>
+      <p>Une équipe resserrée, complémentaire et impliquée à chaque étape de votre projet.</p>
+    </header>
+    <div class="team-stack">
+      <article class="person reveal-child" appTilt>
+        <figure><img src="/assets/team/Abdoulaye.png" alt="Abdoulaye Diallo" /><figcaption>01 — Co-fondateur</figcaption></figure>
+        <div><h3>Abdoulaye Diallo</h3><p>Développeur Full Stack<br />Designer UI/UX</p></div>
+      </article>
+      <article class="person person-middle reveal-child" appTilt>
+        <figure><img src="/assets/team/Jeanne.png" alt="Marie Jeanne Young" /><figcaption>02 — Co-fondatrice</figcaption></figure>
+        <div><h3>Marie Jeanne Young</h3><p>Spécialiste UX<br />Développeuse</p></div>
+      </article>
+      <article class="person reveal-child" appTilt>
+        <figure><img src="/assets/team/Bocoum.png" alt="El Souleymane Bocoum" /><figcaption>03 — Co-fondateur</figcaption></figure>
+        <div><h3>El Souleymane Bocoum</h3><p>Technicien informatique<br />Programmeur</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews" appReveal>
+    <div class="section-kicker"><span>04</span><p>Paroles de clients</p></div>
+    <div class="reviews-title"><h2>LEUR SUCCÈS<br /><em>EST NOTRE ÉCHO.</em></h2><span>★★★★★</span></div>
+    <div class="review-track">
+      <article class="review-card reveal-child">
+        <header><strong>BBC</strong><span>Bocoum Business Company</span></header>
+        <blockquote>“Le résultat a été au-delà de nos attentes. L’équipe a saisi notre vision et l’a transformée en un design créatif et efficace.”</blockquote>
+        <footer>Design graphique · Dakar</footer>
+      </article>
+      <article class="review-card blue-card reveal-child">
+        <header><strong>S</strong><span>Senecop</span></header>
+        <blockquote>“Un design à la fois esthétique et intuitif. Une équipe professionnelle, à l’écoute et respectueuse des délais.”</blockquote>
+        <footer>Design graphique & UI/UX · Sénégal</footer>
+      </article>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" appReveal>
+    <div class="contact-left">
+      <div class="section-kicker"><span>05</span><p>Contact</p></div>
+      <h2>UNE IDÉE ?<br /><em>FAISONS-LA<br />BOUGER.</em></h2>
+      <div class="contact-meta">
+        <a href="mailto:sajtech123@gmail.com">sajtech123&#64;gmail.com ↗</a>
+        <p>Montréal, Canada<br />Dakar, Sénégal</p>
+        <p><a href="tel:+15142987202">+1 (514) 298-7202</a><br /><a href="tel:+221762713646">+221 76 271 36 46</a></p>
+      </div>
+    </div>
+    <form class="project-form" action="mailto:sajtech123@gmail.com" method="post" enctype="text/plain">
+      <p>Parlez-nous de votre projet</p>
+      <label><span>01 · Votre nom</span><input name="nom" required placeholder="Nom et prénom" /></label>
+      <label><span>02 · Votre email</span><input name="email" type="email" required placeholder="vous@entreprise.com" /></label>
+      <label><span>03 · Votre projet</span><input name="sujet" required placeholder="Site, application, identité..." /></label>
+      <label><span>04 · Votre message</span><textarea name="message" rows="4" required placeholder="Quelques mots sur votre ambition"></textarea></label>
+      <button type="submit"><span>Envoyer la demande</span><b>↗</b></button>
+    </form>
+  </section>
+</main>
+
+<footer class="footer">
+  <div><img src="/assets/Saj.png" alt="" /><strong>SAJ TECH</strong></div>
+  <p>© {{currentYear}} — Tous droits réservés</p>
+  <button (click)="scrollTo('home')">Retour en haut ↑</button>
+</footer>
