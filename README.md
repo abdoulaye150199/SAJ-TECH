@@ -21,6 +21,10 @@ npm run build
 
 Les fichiers optimisés sont générés dans `dist/saj-showcase/browser`.
 
+## Formulaire de contact
+
+Le formulaire envoie les demandes à `support@sajintech.com` via FormSubmit. Lors du premier envoi après la mise en production, il faut cliquer sur le lien de confirmation reçu par cette adresse ; les demandes envoyées avant cette confirmation restent conservées par le service.
+
 ## Architecture
 
 - `src/app/core/models` : contrats TypeScript des données

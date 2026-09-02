@@ -161,8 +161,11 @@ button { border: 0; color: inherit; background: none; cursor: pointer; }
   >p{margin:0 0 35px;font:600 25px 'Space Grotesk';letter-spacing:-.04em;}
   label{display:grid;gap:8px;margin-bottom:22px;}label span{color:#718096;font-size:9px;text-transform:uppercase;letter-spacing:.12em;}
   input,textarea{width:100%;padding:11px 0;border:0;border-bottom:1px solid rgba(7,21,47,.18);outline:0;background:transparent;color:#07152f;font:13px inherit;resize:vertical;}
-  input:focus,textarea:focus{border-color:#075bff;}button{width:100%;margin-top:10px;padding:10px 10px 10px 20px;display:flex;justify-content:space-between;align-items:center;border-radius:50px;color:white;background:#075bff;text-align:left;}
+  input:focus,textarea:focus{border-color:#075bff;}input:invalid:not(:placeholder-shown),textarea:invalid:not(:placeholder-shown){border-color:#c94b4b;}button{width:100%;margin-top:10px;padding:10px 10px 10px 20px;display:flex;justify-content:space-between;align-items:center;border-radius:50px;color:white;background:#075bff;text-align:left;transition:opacity .2s,transform .2s;}button:disabled{cursor:wait;opacity:.65;}
   button b{width:42px;aspect-ratio:1;display:grid;place-items:center;border-radius:50%;color:#075bff;background:white;}
+  .honeypot{position:absolute;left:-10000px;width:1px;height:1px;padding:0;opacity:0;pointer-events:none;}
+  .form-feedback{margin:18px 0 0;font-size:12px;line-height:1.5;}
+  .form-success{color:#237344;}.form-error{color:#b33e3e;}.form-feedback a{color:#075bff;text-decoration:underline;text-underline-offset:3px;}
 }
 .footer{padding:28px 6vw;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(7,21,47,.14);background:white;color:#66768b;font-size:10px;
   div{display:flex;align-items:center;gap:8px;color:#07152f;}img{width:40px;}button{color:#075bff;}
