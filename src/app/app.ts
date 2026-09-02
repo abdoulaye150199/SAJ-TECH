@@ -1,70 +1,37 @@
-import { Component, HostListener, signal } from '@angular/core';
-import { RevealDirective } from './shared/reveal.directive';
-import { ParticleLogoComponent } from './shared/particle-logo.component';
-import { TiltDirective } from './shared/tilt.directive';
-
-interface Service {
-  index: string;
-  icon: string;
-  title: string;
-  description: string;
-  tags: string[];
-}
+import { Component, HostListener, ViewEncapsulation, inject, signal } from '@angular/core';
+import { SiteContentService } from './core/services/site-content.service';
+import { ContactSectionComponent } from './features/contact/contact-section.component';
+import { HeroSectionComponent } from './features/home/hero-section.component';
+import { StatementSectionComponent } from './features/home/statement-section.component';
+import { ReviewsSectionComponent } from './features/reviews/reviews-section.component';
+import { ServicesSectionComponent } from './features/services/services-section.component';
+import { TeamSectionComponent } from './features/team/team-section.component';
+import { SiteFooterComponent } from './layout/site-footer.component';
+import { SiteHeaderComponent } from './layout/site-header.component';
 
 @Component({
   selector: 'app-root',
-  imports: [TiltDirective, RevealDirective, ParticleLogoComponent],
+  imports: [
+    SiteHeaderComponent,
+    SiteFooterComponent,
+    HeroSectionComponent,
+    StatementSectionComponent,
+    ServicesSectionComponent,
+    TeamSectionComponent,
+    ReviewsSectionComponent,
+    ContactSectionComponent,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
+  encapsulation: ViewEncapsulation.None,
 })
 export class App {
+  private readonly siteContent = inject(SiteContentService);
+
+  protected readonly content = this.siteContent.content;
   protected readonly menuOpen = signal(false);
   protected readonly scrolled = signal(false);
   protected readonly currentYear = new Date().getFullYear();
-  protected readonly services: Service[] = [
-    {
-      index: '01',
-      icon: 'code',
-      title: 'Développement web & mobile',
-      description: 'Des plateformes rapides, robustes et pensées pour convertir, du prototype au produit final.',
-      tags: ['Angular', 'Mobile', 'API'],
-    },
-    {
-      index: '02',
-      icon: 'layers',
-      title: 'Design UI/UX',
-      description: 'Des interfaces claires et mémorables qui transforment chaque parcours en expérience fluide.',
-      tags: ['UX Research', 'UI Design', 'Prototype'],
-    },
-    {
-      index: '03',
-      icon: 'pen',
-      title: 'Design graphique',
-      description: 'Identités visuelles, supports de communication et créations qui rendent votre marque unique.',
-      tags: ['Branding', 'Print', 'Digital'],
-    },
-    {
-      index: '04',
-      icon: 'server',
-      title: 'Maintenance informatique',
-      description: 'Installation, assistance et maintenance pour garder vos outils performants et disponibles.',
-      tags: ['Support', 'Sécurité', 'Réseau'],
-    },
-    {
-      index: '05',
-      icon: 'play',
-      title: 'Édition vidéo',
-      description: 'Des contenus audiovisuels rythmés et professionnels pour capter l’attention de votre audience.',
-      tags: ['Montage', 'Motion', 'Storytelling'],
-    },
-    {
-      index: '06',
-      icon: 'share',
-      title: 'Réseaux sociaux',
-      description: 'Une stratégie éditoriale cohérente pour construire votre communauté et amplifier votre impact.',
-      tags: ['Stratégie', 'Contenu', 'Analytics'],
-    },
-  ];
 
   @HostListener('document:keydown.escape')
   closeMenu(): void {
@@ -72,21 +39,22 @@ export class App {
   }
 
   @HostListener('window:scroll')
-  onScroll(): void {
+  updateScrollState(): void {
     const root = document.documentElement;
-    const distance = root.scrollHeight - innerHeight;
-    const progress = distance > 0 ? scrollY / distance : 0;
+    const scrollableDistance = root.scrollHeight - window.innerHeight;
+    const progress = scrollableDistance > 0 ? window.scrollY / scrollableDistance : 0;
+
     root.style.setProperty('--scroll-progress', `${progress}`);
-    root.style.setProperty('--hero-shift', `${Math.min(scrollY * 0.16, 110)}px`);
-    this.scrolled.set(scrollY > 80);
+    root.style.setProperty('--hero-shift', `${Math.min(window.scrollY * 0.16, 110)}px`);
+    this.scrolled.set(window.scrollY > 80);
   }
 
   toggleMenu(): void {
-    this.menuOpen.update((open) => !open);
+    this.menuOpen.update((isOpen) => !isOpen);
   }
 
-  scrollTo(id: string): void {
+  navigateTo(sectionId: string): void {
     this.menuOpen.set(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   }
 }

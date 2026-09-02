@@ -23,12 +23,13 @@ Les fichiers optimisés sont générés dans `dist/saj-showcase/browser`.
 
 ## Architecture
 
-- `src/app/app.ts` : contenu et orchestration de la page
-- `src/app/app.html` : sections du site vitrine
-- `src/app/app.scss` : direction artistique et responsive
-- `src/app/shared/water-canvas.component.ts` : animation liquide interactive
-- `src/app/shared/tilt.directive.ts` : effet de perspective des cartes
-- `public/assets/Saj.png` : logo de la marque
-- `public/data/site-data.json` : services, membres, témoignages et coordonnées
+- `src/app/core/models` : contrats TypeScript des données
+- `src/app/core/services` : accès centralisé au contenu JSON
+- `src/app/layout` : navigation et pied de page
+- `src/app/features` : composants autonomes par section métier
+- `src/app/shared` : animation en particules et directives réutilisables
+- `src/app/app.ts` : orchestration et état global minimal
+- `src/app/app.scss` : direction artistique inchangée et responsive
+- `public/data/site-data.json` : source unique des contenus éditables
 
 Les animations respectent automatiquement `prefers-reduced-motion`.
