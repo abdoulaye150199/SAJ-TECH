@@ -15,8 +15,8 @@ import { NavigationItem } from '../core/models/site-data.model';
         }
       </nav>
       <button class="nav-cta" (click)="navigate.emit('contact')">Démarrer un projet <span>↗</span></button>
-      <button class="menu-trigger" (click)="menuToggle.emit()" [attr.aria-expanded]="menuOpen()" aria-label="Ouvrir le menu"><i></i><i></i></button>
     </header>
+    <button class="menu-trigger" (click)="menuToggle.emit()" [attr.aria-expanded]="menuOpen()" aria-label="Ouvrir le menu"><i></i><i></i></button>
     <aside class="menu-panel" [class.open]="menuOpen()">
       <div class="menu-panel-top"><span>Navigation</span><button (click)="menuToggle.emit()">Fermer ×</button></div>
       <nav>

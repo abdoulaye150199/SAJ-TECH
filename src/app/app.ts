@@ -46,7 +46,7 @@ export class App {
 
     root.style.setProperty('--scroll-progress', `${progress}`);
     root.style.setProperty('--hero-shift', `${Math.min(window.scrollY * 0.16, 110)}px`);
-    this.scrolled.set(window.scrollY > 80);
+    this.scrolled.set(window.scrollY > 0);
   }
 
   toggleMenu(): void {
